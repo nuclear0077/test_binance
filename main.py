@@ -5,7 +5,8 @@ import time
 # запросов для получения последней цены XRP/USDT
 # от Binance. Код устанавливает переменную start_time в текущее время и входит
 # в бесконечный цикл, который извлекает цену и проверяет, упала ли она на 1%
-# от максимальной цены за последний час. Если время, прошедшее с момента start_time,
+# от максимальной цены за последний час. Если время,
+# прошедшее с момента start_time,
 # больше или равно 1 часу, код сбрасывает max_price на 0,
 # а start_time на текущее время.
 # Если цена упала на 1%, код выводит сообщение в консоль.
@@ -15,9 +16,12 @@ import time
 max_price = 0
 start_time = time.time()
 
+
 def get_price():
-    response = requests.get("https://api.binance.com/api/v3/ticker/price?symbol=XRPUSDT")
+    response = requests.get(
+        "https://api.binance.com/api/v3/ticker/price?symbol=XRPUSDT")
     return float(response.json()["price"])
+
 
 while True:
     price = get_price()
